@@ -38,3 +38,19 @@ else{
   console.log('nope i havent got it');
 }
 // {} = A SHORT HAND FOR 'NEW OBJECT' so in this statement 2 different brand new objects are being compared so they will not equal the same.
+
+
+
+console.log('-----Function');
+
+function createPerson(firstNameParam, lastNameParam, emailParam, ageParam){
+  var person ={
+    firstName: firstNameParam,
+    lastName: lastNameParam,
+    email: emailParam,
+    age:ageParam
+};
+console.log('New person:', person);
+}
+
+createPerson('Harald', 'Kumar', 'h.kumar@example.com', 15);
