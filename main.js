@@ -77,6 +77,7 @@ if (dayOfWeek.toUpperCase() === 'THURSDAY' || dayOfWeek.toUpperCase() === 'FRIDA
 console.log('--- truthy/falsey:');
 var truthyThings = [1, 0, 'something', '', -1, {}, [], null, undefined, NaN, 'false', '0'];
 
+// For Loop
 for(var i = 0 ; i < truthyThings.length ; i++) {
   if (truthyThings[i]) {
     console.log('  ', truthyThings[i], '--> truthy');
@@ -92,3 +93,17 @@ if (yourName) {
 } else {
   alert('Not sure what your name is!');
 }
+
+//while loop
+console.log('--- Loops:');
+var question = 'Now using a while () loop. What is yur name?';
+yourName = prompt(question);
+while (!yourName){
+  alert('Not sure what your name is!');
+}
+alert ('Nice one, ' + yourName);
+
+do { //do loop
+  yourName = prompt ('Now using a do/while() loop. What is your name?')
+} while (!yourName);
+alert ('Nice one, ' + yourName);
