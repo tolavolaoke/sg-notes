@@ -9,9 +9,9 @@ var person1 = {
 };
 
 var person2 = {
-  firstName:'Aretha',
-  LastName: 'Franklin',
-  email:'ms.legend@examlple.com',
+      firstName:'Aretha',
+          lastName: 'Franklin',
+   email:'ms.legend@examlple.com',
   age:29
 };
 
@@ -31,6 +31,9 @@ for (var i = 0 ; i < people.length; i++){
 }
 
 
+
+
+
 if ({} === {}) {
   console.log( 'yep I got it');
 }
@@ -48,9 +51,28 @@ function createPerson(firstNameParam, lastNameParam, emailParam, ageParam){
     firstName: firstNameParam,
     lastName: lastNameParam,
     email: emailParam,
-    age:ageParam
+    age:ageParam,
+    fullName:function() {
+      return firstName + lastName;
+    }
 };
 console.log('New person:', person);
 }
 
 createPerson('Harald', 'Kumar', 'h.kumar@example.com', 15);
+
+return newPerson;
+}
+
+var harald = createPerson('Harald', 'Kumar', 'h.kumar@example.com', 15);
+console.log('newPerson:', harald);
+
+function isOldEnough(age) {
+  return (age >= 18);
+}
+
+if (isOldEnough(harald.age)) {
+  console.log('Come in');
+} else {
+  console.log('Come back when you are older.');
+}
