@@ -1,0 +1,13 @@
+{
+  "name": "week03-day04-bower",
+  "homepage": "https://github.com/tolavolaoke/sg-notes",
+  "authors": [
+    "Tola Olaoke <tolaoke@spartaglobal.co>"
+  ],
+  "description": "seeing how bower works",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
