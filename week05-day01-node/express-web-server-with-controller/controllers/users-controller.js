@@ -13,11 +13,18 @@ var users = [
   }
 ];
 
+var currentUserId = 100;
 
 function findUserIndexById(userId) {
   return users.findIndex(function (user) {
     return user.id === userId;
   });
+}
+
+function getNextUserId() {
+  currentUserId++;
+
+  return currentUserId.toString();
 }
 
 // Index
@@ -39,7 +46,17 @@ function newUser(req, res) {
 
 // Action: create
 function createUser(req, res) {
-  res.status(200).send('<h1>Action: create</h1>');
+  var userId = getNextUserId();
+  var newUser = {
+    id: userId,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email
+  };
+  users.push(newUser);
+
+  console.log('req.body:', req.body);
+  res.status(200).send('<h1>Action: create new user with id ' + newUser.id + '</h1>');
 }
 
 // Action: edit

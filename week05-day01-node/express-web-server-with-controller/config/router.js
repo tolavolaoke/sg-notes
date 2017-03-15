@@ -9,7 +9,7 @@ router.route('/users')
 router.get('/users/new', usersController.new);
 router.get('/users/:id/edit', usersController.edit);
 
-router.route('users/:id')
+router.route('/users/:id')
   .put(usersController.update)
   .get(usersController.show)
   .delete(usersController.destroy);
