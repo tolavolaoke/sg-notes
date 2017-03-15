@@ -32,88 +32,96 @@ function getNextUserId() {
 // Action: index
 function indexUsers(req, res) {
   res.render('users/index', {
-    title: 'User list',
+    title: 'User list: ',
     users: users
   });
+
+
+  // var html = '<h1>List of users</h1>';
+  //
+  // html += '<ul>';
+  // for (var i = 0; i < users.length; i++) {
+  //   html += '<li><a href="/users/' + users[i].id + '">' + users[i].firstName + ' ' + users[i].lastName + ' (' + users[i].email + ')' + '</a></li>';
+  // }
+  // html += '</ul>';
+  // res.status(200).send(html);
 }
 
-// Action: new
+// Action: new ------------------------------------------------------------
 function newUser(req, res) {
-  res.status(200).send('<h1>Action: new</h1>');
+res.render('users/new', {
+title: 'New user'
+  res.redirect('/users');
+});
 }
 
-// Action: create
+// Action: create ---------------------------------------------------------
 function createUser(req, res) {
+  var userId = getNextUserId();
   var newUser = {
-    id: getNextUserId(),
+    id: userId,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email
   };
-
   users.push(newUser);
-  res.status(200).send('<h1>Action: created new user with id ' + newUser.id + '</h1>');
+  res.redirect('/users');
 }
 
-// Action: edit
+// Action: edit -----------------------------------------------------------
 function editUser(req, res) {
+
   res.status(200).send('<h1>Action: edit</h1>');
 }
 
-// Action: update
+// Action: update ----------------------------------------------------------
 function updateUser(req, res) {
+
   var userId = req.params.id;
-  var userIndex = findUserIndexById(userId);
   var user;
-  var status;
-  var html = '<h1>Updating user with id ' + userId + '</h1>';
+  var html = '<h1>Updating user with id: ' + userId + '</h1>';
+  var userIndex = findUserIndexById(userId);
+
 
   if (userIndex !== -1) {
-    // found the user
     user = users[userIndex];
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.email = req.body.email;
     html += '<p>User updated</p>';
-    status = 200;
+    res.redirect('/users');
   } else {
-    // user with :id does not exist
     html += '<em>Could not find user with id ' + userId + '</em>';
-    status = 404;
+    res.status(404).send(html);
   }
-
-  res.status(status).send(html);
 }
 
-// Action: show
+// Action: show ------------------------------------------------------------
 function showUser(req, res) {
   var userId = req.params.id;
   var userIndex;
   var user;
   var status;
-  var html = '<h1>Show user ' + userId + '</h1>';
 
   userIndex = findUserIndexById(userId);
 
   if (userIndex !== -1) {
     user = users[userIndex];
     status = 200;
-    html += '<p>First name: ' + user.firstName + '</p>';
-    html += '<p>Last name: ' + user.lastName + '</p>';
-    html += '<p>Email: ' + user.email + '</p>';
   } else {
     status = 404;
-    html += '<em>User not found with id ' + userId + '</em>';
   }
 
-  res.status(status).send(html);
+  res.status(status).render('users/show', {
+    title: 'Show user ' + userId,
+    user: user
+  });
 }
 
-// Action: destroy
+// Action: destroy ---------------------------------------------------------
 function destroyUser(req, res) {
   var userId = req.params.id;
   var userIndex;
-  var status;
   var html = '<h1>Delete user ' + userId + '</h1>';
 
   userIndex = findUserIndexById(userId);
@@ -121,14 +129,13 @@ function destroyUser(req, res) {
   if (userIndex !== -1) {
     // user exists
     users.splice(userIndex, 1);
-    status = 200;
+    res.redirect('/users');
     html += 'User with id ' + userId + ' deleted';
   } else {
     // trying to delete non-existent user
-    status = 404;
     html += '<em>User with id ' + userId + ' does not exist; cannot delete</em>';
+    res.status(404).send(html);
   }
-  res.status(status).send(html);
 }
 
 module.exports = {
