@@ -29,7 +29,20 @@ describe('Users', function () {
         expect(err).to.be.null;
         res.should.have.status(200);
         res.should.be.html;
+        res.text.should.match(/User list/);
         done();
       });
+  });
+});
+
+describe('DELETE', function() {
+  it('should return error for non-existent user id', function(done){
+    request
+    .delete('/users/non-existent-user-id')
+    .end(function(err, res) {
+      res.should.have.status(404);
+      done();
+
+    });
   });
 });
