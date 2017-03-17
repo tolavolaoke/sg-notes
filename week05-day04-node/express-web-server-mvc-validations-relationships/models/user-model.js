@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var validationRules = {
 
-var User = mongoose.model('User', {
   firstName: {
     type: String,
     required: true
@@ -11,7 +12,16 @@ var User = mongoose.model('User', {
   email: {
     type: String,
     required: true
-  }
-});
+  },
+  books: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Book'
+    }
+  ]
+};
+var UserSchema = new Schema(validationRules);
+
+var User = mongoose.model('User', UserSchema);
 
 module.exports = User;
