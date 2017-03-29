@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- 'ng-app="My First App"' corresponds to 'My First App in the app.js file', will be looking in the DOM for the attribute 'My First App', 'ng' is an indicator that it is something to do with angular -->
+<html lang="en" ng-app ="myFirstApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular intro</title>
+  <script src="bower_components/angular/angular.min.js" charset="utf-8"></script>
+  <script src="app.js" charset="utf-8"></script>
+
+</head>
+<body>
+  <h1>Angular FTW</h1>
+
+  <div>
+    Is 7 odd? <strong>{{ (7 % 2 ===1) ? 'YES!' : 'Nope :-('}}</strong>
+  </div>
+
+  <div>
+    Is 8 odd? <strong>{{ (7 % 2 ===1) ? 'YES!' : 'Nope :-('}}</strong>
+  </div>
+
+</body>
+</html>
