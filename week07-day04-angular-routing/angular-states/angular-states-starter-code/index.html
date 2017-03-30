@@ -11,12 +11,20 @@
   <script src="/js/app.js"></script>
   <script src="/js/controllers/home.controller.js" charset="utf-8"></script>
   <script src="/js/controllers/about.controller.js" charset="utf-8"></script>
+  <script src="/js/controllers/contact.controller.js" charset="utf-8"></script>
 
   <title>Angular States</title>
 </head>
 <body>
 
   <h1>Angular States</h1>
+
+<!-- nav bar to link to the different states showing the different content -->
+  <nav>
+    <a ui-sref="home">Home</a>
+    <a ui-sref="about">About</a>
+      <a ui-sref="contact">Contact</a>
+  </nav>
 
 <!-- router puts everything in ui view -->
   <section ui-view>
