@@ -27,8 +27,9 @@ router.route('/users/:id')
 
 
 // Books
-  // I added line 31 and 32
+router.get('/books/:id/edit', booksController.edit);
 router.route('/books/:id')
+.put(booksController.update)
   .delete(booksController.destroy);
 
 

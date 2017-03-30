@@ -10,3 +10,13 @@
 <% } else { %>
   <em>User not found. Soz.</em>
 <% } %>
+
+<% if (book) { %>
+  <form method="post" action="/books/<%= user.id %>">
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete</button>
+    <a href="/books/<%= user.id %>/edit">Edit</a>
+  </form>
+<% } else { %>
+  <em>User not found. Soz.</em>
+<% } %>

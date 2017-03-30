@@ -1,4 +1,5 @@
 $(function () {
+  var jokeUrl = 'http://api.icndb.com/jokes/random';
   console.log('page is loaded');
 
   function ajaxTheManualWay() {

@@ -99,6 +99,9 @@ function showUser(req, res) {
       res.status(404).send('Could not get user');
       return;
     }
+
+    console.log('user:', user);
+  // user books is an array containing object ids of books
     res.render('users/show', {
       title: 'Show user',
       user: user
