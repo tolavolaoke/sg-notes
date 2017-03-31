@@ -1,0 +1,25 @@
+
+<section>
+
+  <h2>{{home.title}}</h2>
+
+  <div>
+    <ol>
+      <li ng-repeat="todo in home.todos track by $index">
+        <strong>{{$index + 1}}:</strong> {{todo}}
+
+      <button
+      type="button"
+      ng-click="home.deleteTodos($index)">Delete</button>
+
+      <input
+      type="checkbox"
+      ng-model=""
+      ng-click="home.deleteTodos($index)">
+    </li>
+
+  </ol>
+
+  </div>
+
+</section>

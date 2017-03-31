@@ -1,0 +1,28 @@
+*{
+  color: white;
+  background-color: darkgrey;
+  font-family: Roboto, sans-serif;
+  text-decoration: none;
+  text-align: center;
+
+}
+nav ul {
+  padding: 0;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  padding: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+nav {
+  border-style: solid;
+}
