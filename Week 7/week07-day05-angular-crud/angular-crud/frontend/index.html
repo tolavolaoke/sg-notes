@@ -6,6 +6,8 @@
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
   <script src="js/app.js"></script>
+  <script src="js/controllers/duck.controller.js" charset="utf-8"></script>
+  <script src="js/factories/duck.factory.js" charset="utf-8"></script>
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -17,8 +19,15 @@
   <nav>
     <ul>
       <li><a ui-sref="home">Home</a></li>
+      <li><a ui-sref="new">Add Duck</a></li>
     </ul>
   </nav>
+
+
+<section ng-controller="DuckController as duck" ui-view>
+<!-- anything between this section will be placed in the DuckController here -->
+<!-- everything in the home state shown here -->
+</section>
 
 </body>
 </html>
