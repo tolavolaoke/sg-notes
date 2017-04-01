@@ -1,4 +1,4 @@
-// The order of states is significant 
+// The order of states is significant
 function MainRouter ($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -12,13 +12,15 @@ function MainRouter ($stateProvider, $urlRouterProvider) {
       templateUrl: '/states/new.html'
     })
 
-// on these objects there variables are available...
+    .state('show', {
+      url: '/ducks/:duckId',
+      templateUrl: '/states/show.html'
+    })
 
-        .state('show', {
-          url: '/ducks/:duckId',
-          templateUrl: '/states/show.html'
-        });
-
+    .state('edit', {
+      url: '/ducks/:duckId/edit',
+      templateUrl: '/states/edit.html'
+    });
 
   $urlRouterProvider.otherwise('/ducks');
 

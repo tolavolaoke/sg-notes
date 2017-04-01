@@ -17,19 +17,22 @@ function DuckController($stateParams, DuckFactory, $state) {
     );
   };
 
+// Add Duck =================================================
+
   controller.addDuck = function () {
-    console.log=('addDuck');
+    console.log('addDuck()');
     DuckFactory.createOne(controller.newDuck).then(
       function success(response) {
-        console.log('created new duck:', response);
+        console.log('Created new duck:', response);
         $state.go('home');
       },
       function error(error) {
-        console.log('error adding duck', error);
+        console.warn('Error creating duck:', error);
       }
     );
   };
 
+// DELETE DUCK ================================================================
   controller.deleteDuck = function (duckId){
     DuckFactory.deleteOne(duckId).then(
     function success (response) {
@@ -42,8 +45,25 @@ function DuckController($stateParams, DuckFactory, $state) {
   };
 
 
+// EDIT ========================================================================
+  controller.editDuck = function (duckId){
+    $state.go( 'edit',{ duckId: duckId });
+  };
+
+// UPDATE DUCK ==============================================================
+  controller.updateDuck = function () {
+    DuckFactory.editOne(controller.selectedDuck.duck).then(
+      function success(response) {
+        console.log('duck updated:', response);
+      },
+      function error(error) {
+        console.warn('Error updating duck:', error);
+      }
+    );
+  };
 
 
+// INITILISING FUNCTION =====================================================
   function init() {
     console.log(controller);
     controller.selectedDuck = undefined;
@@ -52,7 +72,7 @@ function DuckController($stateParams, DuckFactory, $state) {
 
 
     controller.newDuck = {};
-    controller.colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple'];
+    controller.colors = ['red', 'orange', 'yellow'];
 
 // referred to as a promise becasue of '.then'
     DuckFactory.getAll().then(
