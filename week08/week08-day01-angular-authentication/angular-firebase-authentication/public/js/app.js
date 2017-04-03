@@ -1,14 +1,10 @@
-angular
-  .module('myApp', ['ui.router'])
-  .config(MainRouter)
-
 function MainRouter ($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/')
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: '/states/home.html',
+      templateUrl: '/states/home.html'
     })
     .state('signup', {
       url: '/signup',
@@ -25,5 +21,9 @@ function MainRouter ($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('secret', {
       url: '/secret',
       templateUrl: '/states/secret.html'
-    })
+    });
 }
+
+angular
+  .module('myApp', ['ui.router', 'firebase'])
+  .config(MainRouter);
