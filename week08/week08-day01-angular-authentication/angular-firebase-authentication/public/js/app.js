@@ -20,10 +20,28 @@ function MainRouter ($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('secret', {
       url: '/secret',
-      templateUrl: '/states/secret.html'
+      templateUrl: '/states/secret.html',
+      resolve:{
+        currentAuth:(AuthFatory )= {}
+      }
     });
 }
 
+function AuthCatcher($rootScope, $state) {
+
+    $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+      if (error === 'AUTH_REQUIRED') {
+        $state.go('auth-required');
+      }
+
+    });
+
+AuthCatcher.$inject = ['$rootScope', '$scope'];
+
+
+
+
 angular
   .module('myApp', ['ui.router', 'firebase'])
-  .config(MainRouter);
+  .config(MainRouter)
+  .run(AuthCatcher);
