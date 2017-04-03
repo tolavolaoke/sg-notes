@@ -2,7 +2,11 @@
 <div class="profile">
 
   <h3>{{ person.name }} - <em>{{ person.age }}</em></h3>
-<ul>
+<button ng-click="toggleSkills()">Show the Skills</button>
+
+<!--make use of this function called toogleskills whichis declared on the scope in profile.directive..js-->
+
+<ul ng-if="showSkills">
   <li
     ng-repeat="skill in person.skills">
     {{ skill }}
