@@ -21,8 +21,6 @@ function AuthFactory($firebaseAuth) {
 AuthFactory.$inject = ['$firebaseAuth'];
 
 
-
-
 angular
     .module('myApp')
     .run(AuthRun)

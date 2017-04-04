@@ -1,5 +1,4 @@
-function MainRouter ($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/');
+function MainRouter ($stateProvider, $urlRouterProvider, AuthFactory) {
 
   $stateProvider
     .state('home', {
@@ -21,21 +20,28 @@ function MainRouter ($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('secret', {
       url: '/secret',
       templateUrl: '/states/secret.html',
-      resolve:{
-        currentAuth:(AuthFatory )= {}
+      resolve: {
+        currentAuth: [
+          'AuthFactory',
+          function (AuthFactory) {
+            return AuthFactory.$requireSignIn();
+          }
+        ]
       }
     });
+  $urlRouterProvider.otherwise('/');
 }
 
-function AuthCatcher($rootScope, $state) {
+MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
-      if (error === 'AUTH_REQUIRED') {
-        $state.go('auth-required');
-      }
+function AuthCatcher($rootScope, $state) { //auth catcher if authotrised to view the page you can see it
 
-    });
-
+  $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+    if (error === 'AUTH_REQUIRED') {
+      $state.go('auth-required');
+    }
+  });
+}
 AuthCatcher.$inject = ['$rootScope', '$scope'];
 
 
