@@ -44,8 +44,8 @@ describe('TodosFactory', () => {
 //Test to clear the list already existing
   describe('clear whole pre populated todo list', () => {
     it('clear the whole todo list', () => {
-      const list = ['new todo'];
-  
+    
+
       factoryToTest.clear();
       expect(factoryToTest.list).toEqual([]);
     });
