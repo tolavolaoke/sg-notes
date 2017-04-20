@@ -42,9 +42,9 @@ describe('TodosFactory', () => {
   });
 
 //Test to clear the list already existing
-  describe('clear whole pre populated todo list', () => {
-    it('clear the whole todo list', () => {
-    
+  describe('Testing a new test', () => {
+    it('clear the whole todo list ', () => {
+
 
       factoryToTest.clear();
       expect(factoryToTest.list).toEqual([]);
