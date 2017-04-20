@@ -15,7 +15,7 @@ function TodosController(TodosFactory) {
   };
 
   controller.add = () => {
-    TodosFactory.add(controller.inputText); //not testing the factory just checking if the method 'add' has been tested ... with the paremeters in the brackets.
+    TodosFactory.add(controller.inputText); 
     controller.inputText = '';
   };
 
@@ -28,5 +28,5 @@ function TodosController(TodosFactory) {
 TodosController.$inject = ['TodosFactory'];
 
 angular
-  .module('TodosApp')
+  .module('todosApp')
   .controller('TodosController', TodosController);
