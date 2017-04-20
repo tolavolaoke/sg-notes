@@ -8,9 +8,9 @@ function DuckController($state, $stateParams, DuckFactory) {
       (response) => {
         controller.selectedDuck = response.data;
       },
-    (error) => {
-      console.warn('Error getting duck:', error);
-    }
+      (error) => {
+        console.warn('Error getting duck:', error);
+      }
     );
   };
 
@@ -53,24 +53,25 @@ function DuckController($state, $stateParams, DuckFactory) {
     );
   };
 
-  function init() {
-    console.log(controller);
+  function init() { //innit is called everytime we run a new controller
     controller.selectedDuck = undefined;
     controller.allDucks = [];
     controller.newDuck = {};
     controller.colors = ['red', 'green', 'blue'];
     DuckFactory.getAll().then(
       (response) => {
+        console.log('all ducks:', response.data);
         controller.allDucks = response.data;
       },
-     (error) => {
-       console.warn('Error getting ducks:', error);
-     }
+      (error) => {
+        console.warn('Error getting ducks:', error);
+      }
     );
   }
 
   init();
 }
+DuckController.$inject = ['$state', '$stateParams', 'DuckFactory']; //injecting the
 
 angular
   .module('DuckApp')
