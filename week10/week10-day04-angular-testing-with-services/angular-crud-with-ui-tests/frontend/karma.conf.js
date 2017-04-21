@@ -5,8 +5,7 @@ module.exports = (config) => {
       'node_modules/angular/angular.min.js',
       'node_modules/angular-ui-router/release/angular-ui-router.min.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      // ** means all the folders within the js folder that ends with .js - include them
-      'js/**/*.js',
+      'js/**/*.js', // ** means all the folders within the js folder that ends with .js - include them
       'spec/**/*.spec.js'
     ],
     frameworks: [

@@ -22,5 +22,5 @@ function MainRouter ($stateProvider, $urlRouterProvider) {
 
 angular
   .module('DuckApp', ['ui.router'])
-  .constant('API_URL', 'http://localhost:3000')
+  .constant('API_URL', 'http://localhost:3000') //SETTING A VALUE THAT WILL BE USED ELESWHERE
   .config(MainRouter);

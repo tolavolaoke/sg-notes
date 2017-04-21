@@ -71,7 +71,7 @@ function DuckController($state, $stateParams, DuckFactory) {
 
   init();
 }
-DuckController.$inject = ['$state', '$stateParams', 'DuckFactory']; //injecting the
+DuckController.$inject = ['$state', '$stateParams', 'DuckFactory']; //injecting an array of literals that map to the parameters of the controller function. The dependcies that will be used in DuckController
 
 angular
   .module('DuckApp')
